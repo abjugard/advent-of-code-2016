@@ -4,10 +4,9 @@ from itertools import count
 from santas_little_helpers import *
 
 def find_hash(data):
-  m = hashlib.md5(data)
+  # m = hashlib.md5(data)
   for i in count():
-    h = m.copy()
-    h.update(str(i).encode())
+    h = hashlib.md5(data+str(i).encode())
     thehash = h.hexdigest()
     if thehash.startswith('00000'):
       yield(thehash)
